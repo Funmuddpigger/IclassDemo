@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.classadm.demo.mapper.DisposeClassMapper">
+
+    <select id="judgeClass" resultType="com.classadm.demo.entity.ClassAll">
+        select * from  class_all where Class_id =#{class_id}
+    </select>
+
+    <select id="lookClass" resultType="com.classadm.demo.entity.ClassAll">
+        select * from  class_all
+        where
+              Class_status =#{class_status}
+            and class_capacity >=#{capacityFloor}
+            and class_capacity &lt;=#{capacityUpper}
+            and class_property=#{classProperty}
+</select>
+
+<select id="gainMatching" resultType="com.classadm.demo.entity.Matching">
+select  * from  matching
+</select>
+
+<select id="gainAudit" resultType="com.classadm.demo.entity.Audit">
+        select  * from  Audit
+</select>
+
+<select id="gainCourse_all" resultType="com.classadm.demo.vo.CourseAll">
+        select  * from  Course_all
+</select>
+
+<select id="gainClass_inout" resultType="com.classadm.demo.vo.ClassInout">
+        select  * from  Class_inout
+</select>
+
+<insert id="addAudit" >
+            insert into audit(Class_id,User_id,User_name,Class_goTime,class_backTime,Audit_number,Class_note,Class_property) values(#{class_id},#{user_id},#{user_name},#{class_goTime},#{class_backTime},#{audit_number},#{class_note},#{class_property})
+    </insert>
+
+    <select id="judgeCourse_All" resultType="com.classadm.demo.vo.CourseAll">
+        select * from  course_all
+        where
+            course_week = #{severalWeeks}
+            and class_id =#{class_id}
+            and course_startweek &lt;= #{howWeek}
+            and course_endweek &gt;= #{howWeek}
+            and course_starttime &lt;= #{course_EndTime}
+            and course_endtime  &gt;= #{course_StartTime}
+            and course_oddeven like concat('%',#{course_OddEven},'%')
+    </select>
+    
+
+</mapper>

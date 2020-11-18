@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.classadm.demo.mapper.SysUsersMapper">
+
+    <select id="selectByName" resultType="com.classadm.demo.entity.SysUsers" parameterType="String">
+       SELECT * FROM sys_users LEFT JOIN sys_users_roles on sys_users.id = sys_users_roles.user_id
+            WHERE sys_users.user_username = #{username}
+    </select>
+
+    <resultMap id="userMap" type="com.classadm.demo.entity.SysUsers">
+        <id column="id" property="id"/>
+        <result column="user_username" property="userUsername"/>
+        <!-- 角色 -->
+        <collection property="roles" javaType="list" ofType="com.classadm.demo.entity.SysRoles">
+            <id column="role_id" property="roleId"></id>
+            <result column="role_name" property="roleName"></result>
+            <!-- 权限 -->
+            <collection property="pers" ofType="com.classadm.demo.entity.SysPermissions">
+                <id property="permissionId" column="permission_id"/>
+                <result property="name" column="name"/>
+                <result property="url" column="url"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="selectrolesByName" parameterType="String" resultMap="userMap">
+        SELECT u.id,u.user_username,r.role_id,r.role_name,p.permission_id,p.name,p.url
+        FROM sys_users u
+        LEFT JOIN sys_users_roles ur
+        ON u.id=ur.user_id
+        LEFT JOIN sys_roles r
+        ON ur.role_id=r.role_id
+        LEFT JOIN sys_roles_permissions rp
+        ON r.role_id=rp.role_id
+        LEFT JOIN sys_permissions p
+        ON rp.permission_id=p.permission_id
+        WHERE u.user_username=#{username}
+    </select>
+
+<!--    <resultMap id="persMap" type="com.classadm.demo.entity.SysRoles">-->
+<!--        &lt;!&ndash; 角色 &ndash;&gt;-->
+<!--            <id column="role_id" property="roleId"></id>-->
+<!--            <result column="role_name" property="roleName"></result>-->
+<!--            &lt;!&ndash; 权限 &ndash;&gt;-->
+<!--            <collection property="pers" javaType="list" ofType="com.classadm.demo.entity.SysPermissions">-->
+<!--                <id property="permissionId" column="permission_id"/>-->
+<!--                <result property="name" column="name"/>-->
+<!--                <result property="url" column="url"/>-->
+<!--            </collection>-->
+<!--    </resultMap>-->
+
+    <select id="selectPersByRoleId" parameterType="Integer" resultType="com.classadm.demo.entity.SysPermissions">
+        SELECT p.permission_id,p.name,p.url,r.role_name
+        FROM sys_roles r
+        LEFT JOIN sys_roles_permissions rp
+        ON r.role_id = rp.role_id
+        LEFT JOIN sys_permissions p
+        ON rp.role_permission_id = p.permission_id
+        WHERE r.role_id = #{roleId}
+    </select>
+</mapper>
