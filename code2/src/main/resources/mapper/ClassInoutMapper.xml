@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.classadm.demo.mapper.ClassInoutMapper">
+    <insert id="classinsert" parameterType="com.classadm.demo.entity.ClassInout">
+        insert into class_inout (class_id,class_type,class_property,class_gotime,class_backtime,class_statue)
+            value (#{classId},#{classType},#{classProperty},#{classGotime},#{classBacktime},#{classStatue})
+    </insert>
+
+    <update id="classupdate" parameterType="com.classadm.demo.entity.ClassInout">
+        update class_inout
+        <set>
+            <if test="classStatue != null and classStatue != ''">
+                class_statue = #{classStatue},
+            </if>
+                class_backtime = #{classBacktime}
+        </set>
+        where class_id = #{classId}
+    </update>
+    
+    <resultMap id="memoryMap" type="com.classadm.demo.entity.ClassInout">
+        <id property="classId" column="class_id"/>
+        <result property="classType" column="class_type"/>
+        <result property="classGotime" column="class_gotime"/>
+        <result property="classBacktime" column="class_backtime"/>
+        <result property="classProperty" column="class_property"/>
+        <result property="classMaster" column="class_master"/>
+        <result property="classStatue" column="class_statue"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+    <select id="classInoutMemory" resultMap="memoryMap" parameterType="com.classadm.demo.entity.ClassInout">
+        select * from class_inout
+        where class_master=#{class_master}
+    </select>
+
+</mapper>

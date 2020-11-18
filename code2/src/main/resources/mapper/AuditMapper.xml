@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.classadm.demo.mapper.AuditMapper">
+    <select id="gainAudit" resultType="com.classadm.demo.entity.Audit">
+        select * from  audit where Audit_number =#{audit_number}
+    </select>
+
+    <insert id="addRecord" >
+        insert into class_inout(Class_id,User_id,class_master,class_gotime,class_backtime,Class_note,class_statue) values(#{class_id},#{user_id},#{class_master},#{class_goTime},#{class_backTime},#{class_note},#{class_statue})
+    </insert>
+
+    <delete id="deleteAudit">
+        delete from audit where Class_id =#{class_id} and Class_goTime = #{class_goTime} and class_backTime = #{class_backTime}
+    </delete>
+
+    <update id="updateAudit">
+        update  audit SET Audit_number =#{audit_number}
+        where   Class_id =#{class_id} and Class_goTime = #{class_goTime} and Class_backTime = #{class_backTime}
+    </update>
+
+    <select id="numMessage" resultType="int">
+        SELECT COUNT(*) FROM message
+    </select>
+
+    <select id="gainMessage" resultType="com.classadm.demo.entity.Message">
+        select * from  message where User_id =#{user_id}
+    </select>
+
+</mapper>
