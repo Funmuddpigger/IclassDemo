@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.classadm.demo.mapper.SysUsersRolesMapper">
+    <update id="updateUsersRoles" parameterType="com.classadm.demo.entity.SysUsersRoles">
+          update sys_users_roles
+          set user_id=#{userId},role_id=#{roleId}
+          where user_role_id=#{userRoleId}
+    </update>
+
+    <insert id="addUsersRoles" parameterType="com.classadm.demo.entity.SysUsersRoles">
+          insert into sys_users_roles(user_id,role_id)
+          values (#{userId},#{roleId})
+    </insert>
+
+    <delete id="deletedUsersRoles" parameterType="com.classadm.demo.entity.SysUsersRoles">
+        delete  from sys_users_roles
+        where user_role_id=#{userRoleId}
+    </delete>
+
+</mapper>

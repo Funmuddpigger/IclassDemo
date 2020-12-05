@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.classadm.demo.mapper.MessageMapper">
+
+    <select id="numMessage" resultType="int">
+        SELECT COUNT(*) FROM message
+    </select>
+
+    <select id="gainMessage" resultType="com.classadm.demo.entity.Message">
+        select * from  message where User_id =#{user_id} and Message_status=#{message_status}
+    </select>
+
+
+    <insert id="setMessage" >
+        insert into message(Message_id,User_id,User_name,Message_content,Message_status) values(#{message_id},#{user_id},#{user_name},#{message_content},#{message_status})
+    </insert>
+
+    <update id="updateMessage">
+        update  message SET Message_status =#{message_status}
+        where   Message_id =#{message_id}
+    </update>
+
+</mapper>

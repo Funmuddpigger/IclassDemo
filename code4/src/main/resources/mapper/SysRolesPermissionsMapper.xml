@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.classadm.demo.mapper.SysRolesPermissionsMapper">
+    <update id="updateRolesPermission" parameterType="com.classadm.demo.entity.SysRolesPermissions">
+        update sys_roles_permissions
+        set  role_id=#{roleId},permission_id=#{permissionId}
+        where role_permission_id=#{rolePermissionId}
+    </update>
+
+    <insert id="addRolesPermissions" parameterType="com.classadm.demo.entity.SysRolesPermissions">
+          insert into sys_roles_permissions(role_id,permission_id)
+          values (#{roleId},#{permissionId})
+    </insert>
+
+    <delete id="deletedRolesPermissions" parameterType="com.classadm.demo.entity.SysRolesPermissions">
+        delete  from sys_roles_permissions
+        where role_permission_id=#{rolePermissionId}
+    </delete>
+</mapper>

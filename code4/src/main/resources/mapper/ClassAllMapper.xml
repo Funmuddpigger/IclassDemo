@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.classadm.demo.mapper.ClassAllMapper">
+
+    <select id="getAll" resultType="com.classadm.demo.entity.ClassAll" parameterType="com.classadm.demo.entity.ClassAll">
+        SELECT * FROM class_all
+    </select>
+
+    <select id="getOneMethod" resultType="com.classadm.demo.entity.ClassAll" parameterType="com.classadm.demo.entity.ClassAll">
+        SELECT * FROM class_all WHERE class_property = '一次'
+    </select>
+
+    <select id="getTwoMethod" resultType="com.classadm.demo.entity.ClassAll" parameterType="com.classadm.demo.entity.ClassAll">
+        SELECT * FROM class_all WHERE class_property = '二次'
+    </select>
+
+    <select id="getByClassId" resultType="com.classadm.demo.entity.ClassAll" parameterType="com.classadm.demo.entity.ClassAll">
+        SELECT *
+        FROM class_all
+        <where>
+            <if test="class_id!=null and class_id!=''">
+                class_id = #{class_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="getByClassFirstName" resultType="com.classadm.demo.entity.ClassAll" parameterType="com.classadm.demo.entity.ClassAll">
+        SELECT *
+        FROM class_all
+        <where>
+            <if test="class_id!=null and class_id!=''">
+                class_id like concat('%',#{class_id},'%')
+            </if>
+        </where> 
+    </select>
+
+    <resultMap id="classMap"  type="com.classadm.demo.entity.ClassAll">
+        <id property="classId" column="class_id"/>
+        <result property="classType" column="class_type"/>
+        <collection property="courseAlls" javaType="java.util.List" ofType="com.classadm.demo.entity.CourseAll">
+            <id property="courseId" column="course_id" />
+            <result property="courseName" column="course_name" />
+            <result property="courseStarttime" column="course_starttime"/>
+            <result property="courseEndtime" column="course_endtime" />
+            <result property="courseWeek" column="course_week"/>
+        </collection>
+    </resultMap>
+
+    <select id="getClassCourseByNam" parameterType="String" resultMap="classMap">
+        select c.class_id,c.class_type,o.course_id,o.course_name,o.course_starttime,o.course_endtime,
+        o.course_week
+        FROM class_all c
+        LEFT JOIN course_all o
+        ON c.class_id = o.class_id
+        where c.class_id = #{class_id}
+    </select>
+
+    <insert id="excelclassinsert" parameterType="com.classadm.demo.entity.ClassAll">
+        insert into class_all (class_id,class_type,class_status,class_capacity,class_property)
+            value (#{classId},#{classType},#{classStatus},#{classCapacity},#{classProperty})
+    </insert>
+
+</mapper>

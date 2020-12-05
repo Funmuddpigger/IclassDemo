@@ -1,0 +1,148 @@
+{
+  "classRm": [
+    {
+      "classId": "A101",
+      "classType": "大",
+      "classState": "空闲",
+      "classCapacity": 60,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A102",
+      "classType": "大",
+      "classState": "使用中",
+      "classCapacity": 60,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A103",
+      "classType": "大",
+      "classState": "空闲",
+      "classCapacity": 60,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A104",
+      "classType": "大",
+      "classState": "使用中",
+      "classCapacity": 80,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A105",
+      "classType": "大",
+      "classState": "使用中",
+      "classCapacity": 80,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A106",
+      "classType": "大",
+      "classState": "空闲",
+      "classCapacity": 80,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A201",
+      "classType": "大",
+      "classState": "停用",
+      "classCapacity": 60,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A202",
+      "classType": "大",
+      "classState": "空闲",
+      "classCapacity": 60,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A203",
+      "classType": "大",
+      "classState": "停用",
+      "classCapacity": 60,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A204",
+      "classType": "大",
+      "classState": "停用",
+      "classCapacity": 80,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A205",
+      "classType": "大",
+      "classState": "使用中",
+      "classCapacity": 80,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "A206",
+      "classType": "大",
+      "classState": "使用中",
+      "classCapacity": 80,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "B101",
+      "classType": "大",
+      "classState": "空闲",
+      "classCapacity": 60,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "B102",
+      "classType": "大",
+      "classState": "停用",
+      "classCapacity": 60,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "B103",
+      "classType": "大",
+      "classState": "空闲",
+      "classCapacity": 60,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "B104",
+      "classType": "大",
+      "classState": "停用",
+      "classCapacity": 80,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "B105",
+      "classType": "大",
+      "classState": "使用中",
+      "classCapacity": 80,
+      "classPorperty": "普通",
+      "classNote": ""
+    },
+    {
+      "classId": "B106",
+      "classType": "大",
+      "classState": "空闲",
+      "classCapacity": 80,
+      "classPorperty": "普通",
+      "classNote": ""
+    }
+  ]
+}
